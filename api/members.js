@@ -3,6 +3,7 @@ const seed = require('../data/members.json');
 const KEY = 'ldbc:members:v1';
 const columns = ['name','role','company','position','industry','phone','email','address','branches','website','facebook','zalo','intro','notes'];
 function config() { return {url:process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL, token:process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN, password:process.env.LDBC_ADMIN_PASSWORD}; }
+function missing(c) { const m=[]; if(!c.url)m.push('redis_url'); if(!c.token)m.push('redis_token'); if(!c.password)m.push('password'); else if(c.password.length<16)m.push('password_too_short'); return m; }
 function configured(c) { return !!(c.url && c.token && c.password && c.password.length >= 16); }
 async function redis(command,c) {
  const r=await fetch(c.url,{method:'POST',headers:{Authorization:'Bearer '+c.token,'Content-Type':'application/json'},body:JSON.stringify(command),signal:AbortSignal.timeout(12000)});
@@ -24,7 +25,7 @@ module.exports=async(req,res)=>{
  const send=(status,body)=>res.status(status).json(body),c=config();
  try{
   if(!['GET','POST'].includes(req.method)){res.setHeader('Allow','GET, POST');return send(405,{error:'Phương thức không hỗ trợ.'});}
-  if(!configured(c)){if(req.method==='GET')return send(200,{configured:false,admin:false,revision:0,members:publicMembers(seed.members)});return send(503,{error:'Chưa cấu hình kho dữ liệu và mật khẩu quản trị trên Vercel.'});}
+  if(!configured(c)){if(req.method==='GET')return send(200,{configured:false,admin:false,revision:0,missing:missing(c),members:publicMembers(seed.members)});return send(503,{error:'Chưa cấu hình kho dữ liệu và mật khẩu quản trị trên Vercel.'});}
   const admin=authenticated(req,c);
   if(req.method==='GET'){const raw=await redis(['GET',KEY],c),state=raw?JSON.parse(raw):{revision:0,members:seed.members};return send(200,{configured:true,admin,revision:state.revision,members:admin?state.members:publicMembers(state.members)});}
   // Browser writes must originate on this deployment. No permissive CORS.
