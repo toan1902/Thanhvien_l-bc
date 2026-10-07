@@ -1,7 +1,7 @@
 const crypto = require('node:crypto');
 const seed = require('../data/members.json');
 const KEY = 'ldbc:members:v1';
-const columns = ['name','role','company','position','industry','phone','email','address','branches','website','facebook','zalo','intro','notes'];
+const columns = ['name','role','company','position','industry','phone','email','address','branches','website','facebook','zalo','detail','intro','notes'];
 function config() { return {url:process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL, token:process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN, password:process.env.LDBC_ADMIN_PASSWORD}; }
 function missing(c) { const m=[]; if(!c.url)m.push('redis_url'); if(!c.token)m.push('redis_token'); if(!c.password)m.push('password'); else if(c.password.length<16)m.push('password_too_short'); return m; }
 function configured(c) { return !!(c.url && c.token && c.password && c.password.length >= 16); }
