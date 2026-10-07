@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STC CROP – Nhà thông minh Đắk Lắk</title>
+<meta name="description" content="Công ty TNHH Đầu tư và Công nghệ STC (STC CROP) – đại lý FPT Smart Home & khóa OSUNO tại Buôn Ma Thuột; thi công, bảo trì hạ tầng cáp quang từ 2017.">
+<meta property="og:title" content="STC CROP – Nhà thông minh Đắk Lắk">
+<meta property="og:image" content="https://thanhvien-ldbc.vercel.app/le-quang-toan/img/hero-house.jpg">
+<meta property="og:url" content="https://thanhvien-ldbc.vercel.app/le-quang-toan/">
+<meta property="og:description" content="Đối tác chiến lược của FPT Telecom Đắk Lắk từ 2017. Nhà thông minh FPT Smart Home, khóa OSUNO, aptomat CNC, cổng tự động. Hotline 0917 07 1717.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f8fd; --surface:#ffffff; --ink:#0e1b33; --muted:#55627a; --line:#dfe6f2;
+  --brand:#0a3da8; --brand-2:#1a73e8; --sky:#38bdf8; --orange:#f26b1d; --red:#d61f26;
+  --hero-ink:#f2f6ff; --hero-bg:linear-gradient(135deg,#061a4a 0%,#0a2f86 55%,#0d4fd1 100%);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a0f1c; --surface:#121a2c; --ink:#e7edf8; --muted:#9aa8c2; --line:#24304a;
+    --brand:#7fb0ff; --brand-2:#5ea0ff; --sky:#5fd0ff; --orange:#ff8a45; --red:#ff5a5f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0f1c; --surface:#121a2c; --ink:#e7edf8; --muted:#9aa8c2; --line:#24304a;
+  --brand:#7fb0ff; --brand-2:#5ea0ff; --sky:#5fd0ff; --orange:#ff8a45; --red:#ff5a5f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,sans-serif;line-height:1.65;font-size:16px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 16px}
+h1,h2,h3{line-height:1.25;font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:.5rem}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:700;color:var(--brand-2)}
+.lead{color:var(--muted);max-width:660px}
+section{padding:72px 0}
+
+/* Hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);padding:28px 0 72px;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;height:120px;width:140%;left:-20%;transform:rotate(-12deg);background:linear-gradient(90deg,transparent,rgba(56,189,248,.18),transparent)}
+.hero::before{top:40px}.hero::after{bottom:-30px;opacity:.6}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:44px;position:relative;z-index:1}
+.nav img{height:44px;width:auto;border-radius:8px}
+.nav .partners{font-size:.82rem;color:#c9d8ff;text-align:right}
+.nav .partners b{color:#fff}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;position:relative;z-index:1}
+.hero .eyebrow{color:var(--sky)}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.5rem);margin:.5rem 0 .8rem}
+.hero h1 span{color:#ffb27a}
+.hero p.sub{color:#d3defa;font-size:1.05rem;max-width:540px;margin-bottom:24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{border:1px solid rgba(147,197,253,.45);border-radius:999px;padding:5px 12px;font-size:.82rem;color:#e6eeff}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:.98rem;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 10px 26px rgba(242,107,29,.35)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+.hero-media{position:relative}
+.hero-media img{border-radius:20px;aspect-ratio:4/3;object-fit:cover;width:100%;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.float{position:absolute;background:#fff;color:#0e1b33;border-radius:12px;padding:10px 14px;box-shadow:0 12px 30px rgba(0,0,0,.25);font-size:.82rem;line-height:1.35}
+.float b{display:block;font-size:1.25rem;color:#0a3da8}
+.float.f1{left:-16px;bottom:22px}
+.float.f2{right:-12px;top:20px}
+
+/* Stats */
+.stats{margin-top:-40px;position:relative;z-index:2}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px rgba(10,61,168,.08)}
+.stat{padding:22px 14px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:clamp(1.6rem,3.6vw,2.2rem);color:var(--brand);line-height:1.15;font-weight:800}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* Fields */
+.fields{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.field{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.field img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.field div{padding:16px 18px 20px}
+.field .no{font-weight:800;color:var(--orange);font-size:.85rem}
+.field h3{font-size:1.05rem;margin:2px 0 6px}
+.field p{font-size:.9rem;color:var(--muted)}
+
+/* Smart home */
+.smart{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.smart-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:center}
+.smart-grid > img{border-radius:18px;border:1px solid var(--line)}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.feat div{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.feat .ic{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--brand-2) 14%,transparent);color:var(--brand)}
+.feat svg{width:20px;height:20px}
+.feat b{display:block;font-size:.95rem}
+.feat small{color:var(--muted);font-size:.82rem;line-height:1.4;display:block}
+.app{margin-top:18px;padding:14px 16px;border-radius:12px;background:color-mix(in srgb,var(--orange) 12%,transparent);font-weight:600}
+
+/* Smart home video */
+.sh-video{margin-top:40px;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:18px}
+.sh-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.sh-head h3{font-size:1.25rem}
+.chapters{display:flex;flex-wrap:wrap;gap:6px}
+.chapters button{font:inherit;font-size:.84rem;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chapters button:hover,.chapters button.on{background:var(--brand-2);border-color:var(--brand-2);color:#fff}
+#shv{display:block;width:100%;aspect-ratio:16/9;border-radius:12px;background:#000}
+.sh-note{font-size:.84rem;color:var(--muted);margin-top:8px}
+
+/* Aptomat */
+.apto-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.apto-grid > img{border-radius:18px;box-shadow:0 20px 44px rgba(200,20,30,.18);max-height:620px;object-fit:cover;object-position:top;width:100%}
+.apto-feat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+.apto-feat span{padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--red) 8%,var(--surface));border:1px solid color-mix(in srgb,var(--red) 22%,transparent);font-size:.9rem;font-weight:600}
+.apto-use{margin-top:14px;font-size:.92rem;color:var(--muted)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 10px 26px rgba(214,31,38,.3)}
+.btn-line{border:1.5px solid var(--line);color:var(--ink)}
+
+/* Gate */
+.gate{background:linear-gradient(160deg,#08142f 0%,#0b2257 100%);color:#eef3ff}
+.gate-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.gcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px}
+.gsvg{width:100%;height:78px;margin-bottom:12px;background:rgba(56,189,248,.08);border-radius:10px;padding:8px}
+.gsvg rect{fill:#5b7bb8}.gsvg .leaf{fill:none;stroke:#38bdf8;stroke-width:2.5}.gsvg .bars{stroke:#38bdf8;stroke-width:1.5;opacity:.6}.gsvg .ground{stroke:#8aa0c8;stroke-width:2}.gsvg .arrow{stroke:#ffb27a;stroke-width:2.5;fill:none}
+.tagk{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:#ffb27a;font-weight:700}
+.gcard h3{font-size:1.15rem;margin:4px 0 0}
+.org-c{font-size:.84rem;color:#9fb3da;margin-bottom:10px}
+.gcard ul{list-style:none;display:grid;gap:6px;font-size:.9rem;color:#d6e0f5}
+.gcard li::before{content:"•";color:#38bdf8;margin-right:8px}
+.gate-std{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.gate-top{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}
+.gate-video{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.45);max-width:340px;justify-self:center;width:100%}
+.gate-video video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+.gate-video figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:.82rem}
+.gate-std span{font-size:.86rem;padding:7px 12px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3)}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:32px}
+.why div{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--brand-2);border-radius:14px;padding:18px}
+.why .n{font-size:1.6rem;font-weight:800;color:var(--brand-2);opacity:.5;line-height:1}
+.why h3{font-size:1rem;margin:8px 0 6px}
+.why p{font-size:.88rem;color:var(--muted)}
+.why div.hl{border-top-color:var(--orange);background:color-mix(in srgb,var(--orange) 7%,var(--surface))}
+.why div.hl .n{color:var(--orange)}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:30px;counter-reset:s}
+.steps li{list-style:none;position:relative;padding:0 10px;text-align:center}
+.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:44px;height:44px;margin:0 auto 10px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;position:relative;z-index:1}
+.steps li::after{content:"";position:absolute;top:22px;left:50%;width:100%;height:2px;background:var(--line)}
+.steps li:last-child::after{display:none}
+.steps b{display:block;font-size:.95rem}
+.steps small{color:var(--muted);font-size:.84rem}
+
+/* Projects */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:10px;margin-top:28px}
+.gallery figure{position:relative;border-radius:12px;overflow:hidden}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery .big{grid-column:span 2;grid-row:span 2}
+.gallery .tall{grid-row:span 2}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-size:.8rem}
+.areas{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.areas span{font-size:.84rem;padding:5px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+
+.telecom{display:grid;grid-template-columns:1fr 1.15fr;gap:36px;margin-top:56px;align-items:start}
+.tel-img{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.tel-img img{border-radius:12px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.logos{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+.strategic{margin:12px 0 14px;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--orange) 14%,var(--surface)),var(--surface));border:1.5px solid color-mix(in srgb,var(--orange) 45%,transparent)}
+.strategic b{display:block;font-size:1.08rem;line-height:1.4;margin-top:6px}
+.strategic small{display:block;color:var(--muted);margin-top:4px}
+.st-badge{display:inline-block;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#fff;background:var(--orange);padding:3px 10px;border-radius:999px}
+.tbl tr.row-fpt td{background:color-mix(in srgb,var(--orange) 8%,var(--surface))}
+.tbl tr.row-fpt td.v{color:var(--orange);white-space:normal}
+.logos span{font-weight:700;font-size:.85rem;padding:7px 12px;border-radius:8px;background:var(--surface);border:1px solid var(--line);color:var(--brand)}
+.tbl{width:100%;border-collapse:collapse;font-size:.88rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{background:color-mix(in srgb,var(--brand-2) 10%,var(--surface));font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tbl td.v{white-space:nowrap;font-weight:700;color:var(--brand);text-align:right}
+.tbl tr:last-child td{border-bottom:0}
+
+/* Team */
+.team{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:28px}
+.team figure{position:relative;border-radius:16px;overflow:hidden}
+.team img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+.team figcaption{position:absolute;left:12px;bottom:12px;background:rgba(6,26,74,.82);color:#fff;font-size:.82rem;padding:6px 10px;border-radius:8px}
+.org{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.org span{padding:8px 14px;border-radius:10px;border:1px dashed var(--line);font-size:.88rem;background:var(--surface)}
+
+/* Contact */
+.contact{background:var(--hero-bg);color:var(--hero-ink)}
+.contact .eyebrow{color:var(--sky)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.clist{list-style:none;display:grid;gap:10px}
+.clist li{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px}
+.clist small{display:block;color:#b9c9ee;font-size:.78rem}
+.clist a,.clist span{text-decoration:none;font-weight:600;word-break:break-word}
+.clist svg{flex:none;width:20px;height:20px;margin-top:3px;color:var(--sky)}
+footer{text-align:center;font-size:.82rem;color:var(--muted);padding:22px 16px}
+.callbar{display:none}
+
+@media (max-width:980px){
+  .hero-grid,.smart-grid,.contact-grid,.telecom,.team,.apto-grid{grid-template-columns:1fr}
+  .gate-cards,.gate-top{grid-template-columns:1fr}
+  .fields{grid-template-columns:1fr 1fr}
+  .why{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3){border-right:0}
+  .stat:nth-child(-n+3){border-bottom:1px solid var(--line)}
+  .float.f2{right:8px}.float.f1{left:8px}
+}
+@media (max-width:640px){
+  section{padding:56px 0}
+  .nav .partners{display:none}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)}
+  .stat:nth-child(2n){border-right:0!important}
+  .stat:last-child{grid-column:span 2;border-bottom:0}
+  .fields,.why,.feat,.apto-feat{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:14px}
+  .steps li{display:grid;grid-template-columns:44px 1fr;gap:12px;text-align:left;padding:0}
+  .steps li::before{margin:0}
+  .steps li::after{display:none}
+  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .gallery .big{grid-column:span 2}
+  .tbl .hide-m{display:none}
+  .callbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;gap:8px;padding:10px 16px;background:var(--surface);border-top:1px solid var(--line)}
+  .callbar a{flex:1;justify-content:center}
+  .callbar .z{border:1.5px solid var(--line);color:var(--ink)}
+  body{padding-bottom:70px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="nav">
+      <img src="img/logo.png" alt="STC CROP">
+      <div class="partners">Đại lý ủy quyền <b>FPT Smart Home</b> · <b>OSUNO</b> · <b>CNC Electric</b></div>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Công nghệ tiên phong · Giá trị bền vững</p>
+        <h1>Nhà thông minh trong tầm tay, <span>chỉ với một chạm</span></h1>
+        <p class="sub">STC CROP (Công ty TNHH Đầu tư và Công nghệ STC) chuyên thi công nhà thông minh FPT Smart Home và hạ tầng cáp quang tại Buôn Ma Thuột, Đắk Lắk từ năm 2017.</p>
+        <div class="chips">
+          <span class="chip">Camera · Khóa cửa · Đèn · Rèm</span>
+          <span class="chip">Aptomat thông minh CNC</span>
+          <span class="chip">Cổng tự động AB GATE · DEA</span>
+          <span class="chip">Đối tác chiến lược FPT Telecom Đắk Lắk</span>
+          <span class="chip">Hỗ trợ Zalo 24/7</span>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="tel:0917071717"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Tư vấn miễn phí 0917 07 1717</a>
+          <a class="btn btn-ghost" href="https://zalo.me/0823047047" target="_blank" rel="noopener">Nhắn Zalo</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="img/hero-house.jpg" alt="Công trình nhà thông minh FPT Smart Home do STC thi công">
+        <div class="float f2"><b>200+</b>hộ gia đình tin dùng</div>
+        <div class="float f1"><b>Trọn đời</b>bảo trì tận nơi</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><b>2017</b><span>năm thành lập</span></div>
+      <div class="stat"><b>8 năm</b><span>thi công &amp; bảo trì cáp quang</span></div>
+      <div class="stat"><b>200+</b><span>hộ gia đình đã phục vụ</span></div>
+      <div class="stat"><b>12</b><span>nhân sự, 7 người trình độ đại học</span></div>
+      <div class="stat"><b>24/7</b><span>hỗ trợ kỹ thuật qua Zalo</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FIELDS -->
+<section id="linh-vuc">
+  <div class="wrap">
+    <p class="eyebrow">Lĩnh vực hoạt động</p>
+    <h2>Bốn mảng chính của STC</h2>
+    <p class="lead">STC hoạt động trong hai mảng: hạ tầng viễn thông và nhà thông minh. Cả hai mảng đều do một đội ngũ kỹ thuật thực hiện, có bảo hành và hậu mãi tại chỗ.</p>
+    <div class="fields">
+      <div class="field"><img src="img/cable-2.jpg" alt="Kéo cáp quang"><div><span class="no">01</span><h3>Xây dựng hạ tầng cáp quang</h3><p>Thi công tuyến cáp ngầm và cáp treo. Kéo cáp, hàn nối, đo kiểm và nghiệm thu.</p></div></div>
+      <div class="field"><img src="img/cable-3.jpg" alt="Bảo trì cáp quang"><div><span class="no">02</span><h3>Bảo trì, vận hành cáp quang</h3><p>Bảo dưỡng định kỳ, ứng cứu và xử lý sự cố để tuyến cáp chạy ổn định, an toàn và liên tục.</p></div></div>
+      <div class="field"><img src="img/interior.jpg" alt="Nhà thông minh"><div><span class="no">03</span><h3>Thi công &amp; phân phối nhà thông minh</h3><p>Tư vấn, thiết kế, lắp đặt và cấu hình thiết bị FPT Smart Home chính hãng.</p></div></div>
+      <div class="field"><img src="img/switch.jpg" alt="Thiết bị điện thông minh"><div><span class="no">04</span><h3>Thi công &amp; phân phối thiết bị điện</h3><p>Aptomat thông minh CNC chống sốc điện cách ly, công tắc cảm ứng và động cơ cổng tự động.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SMART HOME -->
+<section class="smart" id="nha-thong-minh">
+  <div class="wrap smart-grid">
+    <img src="img/fpt-solution.jpg" alt="Giải pháp nhà thông minh FPT Smart Home – STC">
+    <div>
+      <p class="eyebrow">Nhà thông minh FPT Smart Home</p>
+      <h2>Nâng tầm trải nghiệm sống</h2>
+      <p class="lead">Giải pháp phù hợp cho nhà phố, căn hộ, biệt thự, văn phòng và công trình thương mại.</p>
+      <div class="feat">
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span><span><b>Chiếu sáng thông minh</b><small>Tự bật/tắt theo kịch bản và cảm biến</small></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span><b>An ninh &amp; camera</b><small>Báo động, xem nhà từ xa qua điện thoại</small></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span><b>Khóa thông minh OSUNO</b><small>Có loại cho cửa gỗ, cửa nhôm, cửa cổng và khóa tự động</small></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18M5 3v18M19 3v18M9 3v12M15 3v12"/></svg></span><span><b>Rèm &amp; <a href="#cong-tu-dong">cổng tự động</a></b><small>Mở và đóng bằng một chạm hoặc theo lịch</small></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><span><b><a href="#aptomat">Aptomat thông minh</a></b><small>Chống sốc điện cách ly, đo dòng trên điện thoại</small></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg></span><span><b>Cảm biến &amp; điều hòa</b><small>Báo khói, cảm biến cửa và chuyển động, điều khiển điều hòa</small></span></div>
+      </div>
+      <p class="app">Tất cả thiết bị được điều khiển chung trong một ứng dụng trên điện thoại.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sh-video">
+      <div class="sh-head">
+        <div>
+          <p class="eyebrow">Video công trình thực tế</p>
+          <h3>Trải nghiệm nhà thông minh do STC lắp đặt</h3>
+        </div>
+        <div class="chapters" role="group" aria-label="Chọn đoạn video">
+          <button data-t="0">🌱 Tưới cây tự động</button>
+          <button data-t="12">💡 Điện thông minh</button>
+          <button data-t="28">🪟 Rèm thông minh</button>
+          <button data-t="46">❄️ Điều hòa</button>
+          <button data-t="58">🔲 Công tắc cảm ứng</button>
+        </div>
+      </div>
+      <video id="shv" src="img/nha-thong-minh.mp4" poster="img/nha-thong-minh-poster.jpg" muted loop playsinline controls preload="metadata" aria-label="Video demo nhà thông minh FPT Smart Home do STC lắp đặt"></video>
+      <p class="sh-note">🔊 Bấm vào biểu tượng loa trên video để nghe kỹ thuật viên STC giới thiệu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APTOMAT CNC -->
+<section id="aptomat">
+  <div class="wrap apto-grid">
+    <div>
+      <p class="eyebrow" style="color:var(--red)">Aptomat thông minh CNC Electric</p>
+      <h2>An toàn điện cho cả gia đình</h2>
+      <p class="lead">STC phân phối và lắp đặt aptomat thông minh CNC Electric. Thiết bị có chức năng chống sốc điện cách ly và kết nối với ứng dụng Tuya trên điện thoại. Có thể bật/tắt và xem dòng điện từ xa.</p>
+      <div class="apto-feat">
+        <span>⚡ Cắt ngắt mạch thông minh</span>
+        <span>📱 Đo dòng điện trên điện thoại</span>
+        <span>🛡️ Chống sốc điện cách ly</span>
+        <span>💧 Phát hiện dòng rò điện</span>
+        <span>📈 Bảo vệ quá áp, thấp áp</span>
+        <span>🔌 Chống mất pha</span>
+        <span>🌩️ Cắt sét lan truyền</span>
+        <span>🔥 Giảm rủi ro cháy nổ do điện</span>
+      </div>
+      <p class="apto-use"><b>Ứng dụng:</b> nhà ở, khu dân cư, văn phòng, trường học, bệnh viện, khách sạn, cây xăng, nhà máy, trạm năng lượng mặt trời, nuôi trồng thủy sản…</p>
+      <div class="cta" style="margin-top:20px">
+        <a class="btn btn-red" href="tel:0917071717">Tư vấn aptomat: 0917 07 1717</a>
+        <a class="btn btn-line" href="https://web.facebook.com/profile.php?id=61578414500896" target="_blank" rel="noopener">Fanpage Aptomat CNC Đắk Lắk</a>
+      </div>
+    </div>
+    <img src="img/aptomat-cnc.jpg" alt="Aptomat thông minh CNC Electric – chống sốc điện cách ly">
+  </div>
+</section>
+
+<!-- CONG TU DONG -->
+<section class="gate" id="cong-tu-dong">
+  <div class="wrap">
+    <div class="gate-top">
+      <div>
+        <p class="eyebrow" style="color:var(--sky)">Cổng tự động</p>
+        <h2>Mở cổng bằng một nút bấm, kể cả khi mất điện</h2>
+        <p class="lead" style="color:#c9d6f0">STC lắp động cơ cổng âm sàn và cổng lùa của AB GATE (Việt Nam) và DEA (Italy). Có thể kết hợp với khóa cổng OSUNO và hệ sinh thái FPT Smart Home.</p>
+        <div class="gate-std">
+          <span>✔ Điều khiển từ xa (remote) đi kèm</span>
+          <span>✔ Cảm biến an toàn chống kẹp người và xe</span>
+          <span>✔ Mở bằng khóa chìa khi mất điện</span>
+          <span>✔ Tùy chọn điều khiển qua điện thoại (module XSmarter / AB Smart)</span>
+          <span>✔ Khảo sát cổng, trụ, ray và nguồn điện trước khi chốt model</span>
+        </div>
+      </div>
+      <figure class="gate-video">
+        <video src="img/cong-tu-dong.mp4" poster="img/cong-tu-dong-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Video công trình cổng âm sàn tự động do STC lắp đặt"></video>
+        <figcaption>▶ Công trình thực tế: cổng 2 cánh âm sàn tự động do STC lắp đặt</figcaption>
+      </figure>
+    </div>
+    <div class="gate-cards">
+      <div class="gcard">
+        <svg viewBox="0 0 120 70" class="gsvg"><rect x="4" y="10" width="8" height="56" rx="2"/><rect x="108" y="10" width="8" height="56" rx="2"/><path d="M14 18 L58 24 V62 H14 Z" class="leaf"/><path d="M106 18 L62 24 V62 H106 Z" class="leaf"/><path d="M14 66 H106" class="ground"/></svg>
+        <span class="tagk">Cổng mở cánh · âm sàn</span>
+        <h3>AB GATE âm sàn</h3>
+        <p class="org-c">Hàng Việt Nam</p>
+        <ul><li>Tải 800 kg/cánh</li><li>Mở 90° trong 19 giây, góc mở tối đa 102°</li><li>Động cơ IP67, có gioăng chống rác và nước</li><li>Có bộ ắc quy lưu điện đi kèm</li></ul>
+      </div>
+      <div class="gcard">
+        <svg viewBox="0 0 120 70" class="gsvg"><rect x="4" y="10" width="8" height="56" rx="2"/><rect x="108" y="10" width="8" height="56" rx="2"/><path d="M14 18 L58 24 V62 H14 Z" class="leaf"/><path d="M106 18 L62 24 V62 H106 Z" class="leaf"/><path d="M14 66 H106" class="ground"/></svg>
+        <span class="tagk">Cổng mở cánh · âm sàn</span>
+        <h3>DEA Ghost 100 – 24V</h3>
+        <p class="org-c">Nhập khẩu Italy</p>
+        <ul><li>Cánh dài đến 3,5 m, tải 600 kg/cánh</li><li>Đóng/mở trong 14 giây</li><li>Động cơ IP67, chạy được từ −20°C đến 50°C</li><li>Động cơ âm sàn, không lộ thiết bị</li></ul>
+      </div>
+      <div class="gcard">
+        <svg viewBox="0 0 120 70" class="gsvg"><rect x="4" y="10" width="8" height="56" rx="2"/><path d="M20 20 H92 V62 H20 Z" class="leaf"/><path d="M28 20 V62 M40 20 V62 M52 20 V62 M64 20 V62 M76 20 V62" class="bars"/><path d="M4 66 H116" class="ground"/><path d="M96 41 h14 m-5 -5 l5 5 l-5 5" class="arrow"/></svg>
+        <span class="tagk">Cổng trượt · lùa</span>
+        <h3>DEA Livi 900 kg – 24V</h3>
+        <p class="org-c">Nhập khẩu Italy</p>
+        <ul><li>Tải trọng cánh đến 900 kg</li><li>Tốc độ 10 m/phút, công suất 110W</li><li>Có giới hạn hành trình và cảm biến an toàn</li><li>Mở bằng khóa trên thân động cơ khi mất điện</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="vi-sao">
+  <div class="wrap">
+    <p class="eyebrow">Tại sao chọn STC</p>
+    <h2>Năm lý do khách hàng chọn STC</h2>
+    <div class="why">
+      <div><span class="n">01</span><h3>Năng lực thi công chuyên sâu</h3><p>Có kinh nghiệm thực tế với nhiều loại công trình, đáp ứng yêu cầu kỹ thuật và tiến độ.</p></div>
+      <div><span class="n">02</span><h3>Đội ngũ chuyên môn cao</h3><p>Kỹ sư và kỹ thuật viên được đào tạo bài bản, nắm vững công nghệ.</p></div>
+      <div><span class="n">03</span><h3>Giải pháp đồng bộ</h3><p>Làm trọn gói từ tư vấn, thiết kế, cung cấp hàng chính hãng đến thi công, giúp tối ưu chi phí.</p></div>
+      <div><span class="n">04</span><h3>Cam kết chất lượng &amp; tiến độ</h3><p>Ưu tiên chất lượng, an toàn và tiến độ, làm đúng những gì đã cam kết.</p></div>
+      <div class="hl"><span class="n">05</span><h3>Hậu mãi trọn đời</h3><p>Bảo hành theo hãng và bảo trì trọn đời, kỹ thuật đến tận nơi khi khách cần.</p></div>
+    </div>
+
+    <ol class="steps">
+      <li><span><b>Tư vấn</b><small>Nắm nhu cầu và ngân sách</small></span></li>
+      <li><span><b>Thiết kế</b><small>Đề xuất giải pháp cho từng công trình</small></span></li>
+      <li><span><b>Thi công</b><small>Lắp đặt và cấu hình hệ thống</small></span></li>
+      <li><span><b>Bàn giao</b><small>Hướng dẫn chủ nhà sử dụng ứng dụng</small></span></li>
+      <li><span><b>Bảo trì</b><small>Hỗ trợ kỹ thuật lâu dài</small></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="smart" id="cong-trinh">
+  <div class="wrap">
+    <p class="eyebrow">Dự án &amp; công trình tiêu biểu</p>
+    <h2>Các công trình STC đã thực hiện</h2>
+    <p class="lead">STC đã thi công nhà thông minh cho biệt thự, nhà phố và showroom ở nhiều tỉnh.</p>
+    <div class="gallery">
+      <figure class="big"><img src="img/house-3.jpg" alt="Biệt thự"><figcaption>Biệt thự trang bị FPT Smart Home</figcaption></figure>
+      <figure><img src="img/house-2.jpg" alt="Nhà vườn"><figcaption>Nhà vườn, Buôn Ma Thuột</figcaption></figure>
+      <figure class="tall"><img src="img/showroom.jpg" alt="Showroom FPT Smart Home"><figcaption>Showroom FPT Smart Home</figcaption></figure>
+      <figure><img src="img/lock-1.jpg" alt="Khóa OSUNO"><figcaption>Khóa vân tay OSUNO</figcaption></figure>
+      <figure><img src="img/house-4.jpg" alt="Nhà phố"><figcaption>Nhà phố nhiều tầng</figcaption></figure>
+      <figure><img src="img/interior.jpg" alt="Nội thất"><figcaption>Văn phòng / không gian thương mại</figcaption></figure>
+      <figure><img src="img/lock-2.jpg" alt="Khóa cửa nhôm"><figcaption>Khóa cửa nhôm kính</figcaption></figure>
+    </div>
+    <div class="areas">
+      <span>📍 Buôn Ma Thuột – Đắk Lắk</span><span>📍 Pleiku – Gia Lai</span><span>📍 Ninh Hòa – Khánh Hòa</span><span>📍 Thủ Dầu Một – Bình Dương</span>
+    </div>
+
+    <div class="telecom">
+      <div>
+        <p class="eyebrow">Hạ tầng viễn thông</p>
+        <h2 style="font-size:1.6rem">Đối tác của các nhà mạng lớn</h2>
+        <div class="strategic">
+          <span class="st-badge">★ Đối tác chiến lược</span>
+          <b>Đối tác chiến lược chủ lực của FPT Telecom Chi nhánh Đắk Lắk từ năm 2017 đến nay</b>
+          <small>Thi công và lắp đặt mạng cáp viễn thông trên địa bàn Đắk Lắk và Đắk Nông</small>
+        </div>
+        <p class="lead">STC cũng thi công và bảo trì hạ tầng cáp quang cho các nhà mạng và đơn vị viễn thông khác.</p>
+        <div class="logos"><span>CMC Telecom</span><span>MobiFone</span><span>SCTV</span><span>PITC</span><span>Linkco</span></div>
+        <div class="tel-img">
+          <img src="img/cable-1.jpg" alt="Cuộn cáp quang tại công trường">
+          <img src="img/fiber-splicer.jpg" alt="Máy hàn cáp quang">
+          <img src="img/cable-3.jpg" alt="Thi công trên cột">
+        </div>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>Hợp đồng tiêu biểu</th><th class="hide-m">Chủ đầu tư</th><th style="text-align:right">Giá trị (đ)</th></tr></thead>
+        <tbody>
+          <tr class="row-fpt"><td>Thi công, lắp đặt mạng cáp viễn thông Đắk Lắk &amp; Đắk Nông (2017 – nay)</td><td class="hide-m">CN Đắk Lắk – CTCP Viễn thông FPT</td><td class="v">Theo từng hạng mục</td></tr>
+          <tr><td>Bảo trì, ứng cứu, xử lý sự cố hạ tầng cáp quang Đắk Lắk (1 năm)</td><td class="hide-m">CTCP Linkco</td><td class="v">1.087.770.444</td></tr>
+          <tr><td>Bảo trì hạ tầng cáp quang CMC Telecom tại Đắk Lắk (1 năm)</td><td class="hide-m">TNHH TM &amp; DV Viễn thông TKH</td><td class="v">908.887.392</td></tr>
+          <tr><td>Vận hành, ứng cứu thông tin tuyến cáp quang Đắk Lắk &amp; Đắk Nông (1 năm)</td><td class="hide-m">CTCP Đầu tư PITC</td><td class="v">348.665.245</td></tr>
+          <tr><td>Hạ tầng cáp quang mở rộng camera giám sát an ninh công cộng TP Buôn Ma Thuột</td><td class="hide-m">CTCP Biển Bạc</td><td class="v">346.906.000</td></tr>
+          <tr><td>Tuyến cáp truyền dẫn gói 7 tuyến tại Gia Lai (2021)</td><td class="hide-m">CTCP Đầu tư PITC</td><td class="v">323.529.800</td></tr>
+          <tr><td>Kết nối các tập điểm PON phục vụ MobiFiber tại Đắk Lắk (2023)</td><td class="hide-m">TNHH Xây lắp – TM &amp; DV Lê Nguyễn</td><td class="v">298.690.848</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="doi-ngu">
+  <div class="wrap">
+    <p class="eyebrow">Đội ngũ</p>
+    <h2>Đội ngũ chuyên nghiệp, có thiết bị chuyên dụng</h2>
+    <p class="lead">Đội ngũ gồm 12 cán bộ quản lý, kỹ thuật và thi công (7 người trình độ đại học, 5 người cao đẳng). STC có máy hàn cáp quang và máy đo OTDR để kiểm tra tuyến.</p>
+    <div class="team">
+      <figure><img src="img/team.jpg" alt="Đội ngũ STC Đắk Lắk"><figcaption>Đội ngũ STC Đắk Lắk cùng FPT Smart Home</figcaption></figure>
+      <figure><img src="img/signing.jpg" alt="Ký kết hợp tác"><figcaption>Ký kết hợp tác với đối tác</figcaption></figure>
+    </div>
+    <div class="org"><span>Giám đốc</span><span>Phòng Hành chính – Kế toán</span><span>Phòng Kỹ thuật</span><span>Phòng Kinh doanh</span><span>Bộ phận Thi công</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="lien-he">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Liên hệ</p>
+      <h2>Nhận tư vấn và khảo sát miễn phí</h2>
+      <p style="color:#d3defa;margin:10px 0 24px;max-width:470px">Anh/chị đang xây nhà mới, sửa nhà, cần lắp khóa thông minh, camera hoặc cần thi công và bảo trì tuyến cáp quang? Gọi hoặc nhắn Zalo, đội kỹ thuật STC sẽ tư vấn ngay.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="tel:0917071717">Gọi 0917 07 1717</a>
+        <a class="btn btn-ghost" href="https://web.facebook.com/nhathongminhfptbmt/" target="_blank" rel="noopener">Fanpage</a>
+      </div>
+    </div>
+    <ul class="clist">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div><small>Hotline</small><a href="tel:0917071717">0917 07 17 17</a> · <a href="tel:0823047047">0823 047 047</a></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><div><small>Email</small><a href="mailto:stctelecom.dlk@gmail.com">stctelecom.dlk@gmail.com</a></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-6 8-12a8 8 0 0 0-16 0c0 6 8 12 8 12z"/><circle cx="12" cy="10" r="3"/></svg><div><small>Văn phòng / Showroom</small><a href="https://maps.google.com/?q=104+Nguyen+Thuong+Hien,+Buon+Ma+Thuot" target="_blank" rel="noopener">104 Nguyễn Thượng Hiền, P. Tân An, Đắk Lắk</a></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg><div><small>Trụ sở chính</small><span>165 tổ 10, khối 1, P. Tân Lập, Đắk Lắk</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><div><small>Website · YouTube</small><a href="https://stccrop.com/" target="_blank" rel="noopener">stccrop.com</a> · <a href="https://nhathongminhbmt.com/" target="_blank" rel="noopener">nhathongminhbmt.com</a> · <a href="https://www.youtube.com/@toanstcsmart" target="_blank" rel="noopener">YouTube</a></div></li>
+    </ul>
+  </div>
+</section>
+
+<footer>© 2026 Công ty TNHH Đầu tư và Công nghệ STC (STC CROP) · Công nghệ tiên phong – Giá trị bền vững</footer>
+
+<div class="callbar">
+  <a class="btn btn-primary" href="tel:0917071717">Gọi tư vấn</a>
+  <a class="btn z" href="https://zalo.me/0823047047" target="_blank" rel="noopener">Zalo</a>
+</div>
+
+<script>
+(function(){
+  var v=document.getElementById('shv'); if(!v) return;
+  var bs=[].slice.call(document.querySelectorAll('.chapters button'));
+  bs.forEach(function(b){b.addEventListener('click',function(){v.currentTime=+b.dataset.t; v.play().catch(function(){});});});
+  v.addEventListener('timeupdate',function(){var t=v.currentTime,cur=null;bs.forEach(function(b){if(t>=+b.dataset.t-0.2)cur=b;});bs.forEach(function(b){b.classList.toggle('on',b===cur);});});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)v.play().catch(function(){});else v.pause();});},{threshold:.4}).observe(v);}
+})();
+</script>
+</body>
+</html>
