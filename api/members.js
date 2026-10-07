@@ -18,7 +18,9 @@ function cleanMembers(input){
  if(Buffer.byteLength(JSON.stringify(result))>3000000)throw Error('Danh sách vượt 3 MB; hãy giảm dung lượng ảnh hoặc số hồ sơ.');return result;
 }
 const publicMembers=members=>members.map(({notes,...m})=>m);
-const SAVE_SCRIPT=`local old=redis.call('GET',KEYS[1]); local version=0; if old then version=cjson.decode(old).revision end; if version~=tonumber(ARGV[1]) then return 0 end; redis.call('SET',KEYS[1],ARGV[2]); return 1`;
+const HISTORY_KEY = 'ldbc:members:history', HISTORY_SIZE = 30;
+// Every accepted save pushes the replaced state onto a capped history list, so any earlier version can be recovered.
+const SAVE_SCRIPT=`local old=redis.call('GET',KEYS[1]); local version=0; if old then version=cjson.decode(old).revision end; if version~=tonumber(ARGV[1]) then return 0 end; if old then redis.call('LPUSH',KEYS[2],old); redis.call('LTRIM',KEYS[2],0,${HISTORY_SIZE-1}) end; redis.call('SET',KEYS[1],ARGV[2]); return 1`;
 const RATE_SCRIPT=`local n=redis.call('INCR',KEYS[1]); if n==1 then redis.call('EXPIRE',KEYS[1],600) end; return n`;
 module.exports=async(req,res)=>{
  res.setHeader('Cache-Control','no-store, max-age=0');res.setHeader('X-Content-Type-Options','nosniff');
@@ -27,6 +29,13 @@ module.exports=async(req,res)=>{
   if(!['GET','POST'].includes(req.method)){res.setHeader('Allow','GET, POST');return send(405,{error:'Phương thức không hỗ trợ.'});}
   if(!configured(c)){if(req.method==='GET')return send(200,{configured:false,admin:false,revision:0,missing:missing(c),members:publicMembers(seed.members)});return send(503,{error:'Chưa cấu hình kho dữ liệu và mật khẩu quản trị trên Vercel.'});}
   const admin=authenticated(req,c);
+  const query=new URL(req.url||'/','https://local').searchParams;
+  if(req.method==='GET'&&query.has('history')){
+   if(!admin)return send(401,{error:'Cần đăng nhập quản trị để xem lịch sử.'});
+   const list=((await redis(['LRANGE',HISTORY_KEY,0,-1],c))||[]).map(s=>JSON.parse(s)),want=query.has('revision')?Number(query.get('revision')):NaN;
+   if(Number.isSafeInteger(want)){const state=list.find(s=>s.revision===want);return state?send(200,{revision:state.revision,updatedAt:state.updatedAt||'',members:state.members}):send(404,{error:'Không tìm thấy bản lưu này.'});}
+   return send(200,{history:list.map(s=>({revision:s.revision,updatedAt:s.updatedAt||'',count:s.members.length,names:s.members.map(m=>m.name)}))});
+  }
   if(req.method==='GET'){const raw=await redis(['GET',KEY],c),state=raw?JSON.parse(raw):{revision:0,members:seed.members};return send(200,{configured:true,admin,revision:state.revision,members:admin?state.members:publicMembers(state.members)});}
   // Browser writes must originate on this deployment. No permissive CORS.
   let origin;try{origin=new URL(req.headers.origin);}catch{return send(403,{error:'Nguồn yêu cầu không hợp lệ.'});}
@@ -42,7 +51,7 @@ module.exports=async(req,res)=>{
   if(!admin)return send(401,{error:'Phiên đăng nhập đã hết. Hãy sao lưu bản đang sửa trước khi đăng nhập lại.'});
   if(b.action!=='save'||!Number.isSafeInteger(b.revision)||b.revision<0)return send(400,{error:'Yêu cầu lưu không hợp lệ.'});
   let members;try{members=cleanMembers(b.members)}catch(e){return send(400,{error:e.message})}
-  const next={revision:b.revision+1,updatedAt:new Date().toISOString(),members};const saved=await redis(['EVAL',SAVE_SCRIPT,1,KEY,b.revision,JSON.stringify(next)],c);
+  const next={revision:b.revision+1,updatedAt:new Date().toISOString(),members};const saved=await redis(['EVAL',SAVE_SCRIPT,2,KEY,HISTORY_KEY,b.revision,JSON.stringify(next)],c);
   if(!saved)return send(409,{error:'Danh sách đã thay đổi ở thiết bị khác. Hãy sao lưu bản đang sửa, rồi tải bản mới để đối chiếu.'});return send(200,{ok:true,revision:next.revision,updatedAt:next.updatedAt});
  }catch{return send(503,{error:'Chưa kết nối được kho dữ liệu. Thay đổi chưa được đăng lên website; hãy giữ bản sao lưu và thử lại.'});}
 };
