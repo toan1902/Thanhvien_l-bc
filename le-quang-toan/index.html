@@ -204,6 +204,13 @@ section{padding:72px 0}
 .clist a,.clist span{text-decoration:none;font-weight:600;word-break:break-word}
 .clist svg{flex:none;width:20px;height:20px;margin-top:3px;color:var(--sky)}
 footer{text-align:center;font-size:.82rem;color:var(--muted);padding:22px 16px}
+.yt-band{background:var(--surface);border-top:1px solid var(--line);padding:22px 0}
+.yt-in{display:flex;align-items:center;gap:16px}
+.yt-logo{width:52px;height:auto;flex:none}
+.yt-tx{flex:1}.yt-tx b{display:block;font-size:1.05rem}.yt-tx small{color:var(--muted);font-size:.88rem}
+.yt-btn{flex:none;background:#ff0000;color:#fff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:10px;transition:transform .15s}
+.yt-btn:hover{transform:translateY(-2px)}
+@media (max-width:640px){.yt-in{flex-wrap:wrap}.yt-btn{width:100%;text-align:center}}
 .callbar{display:none}
 
 @media (max-width:980px){
@@ -521,6 +528,13 @@ footer{text-align:center;font-size:.82rem;color:var(--muted);padding:22px 16px}
   </div>
 </section>
 
+<div class="yt-band">
+  <div class="wrap yt-in">
+    <svg class="yt-logo" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#ff0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>
+    <div class="yt-tx"><b>Xem thêm video công trình trên YouTube</b><small>Kênh STC Smart Home: hướng dẫn sử dụng, công trình thực tế, review thiết bị</small></div>
+    <a class="yt-btn" href="https://www.youtube.com/@toanstcsmart" target="_blank" rel="noopener">▶ Kênh YouTube @toanstcsmart</a>
+  </div>
+</div>
 <footer>© 2026 Công ty TNHH Đầu tư và Công nghệ STC (STC CROP) · Công nghệ tiên phong – Giá trị bền vững</footer>
 
 <div class="callbar">
